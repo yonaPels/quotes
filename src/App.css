@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+}
+
+.app-header {
+  background-color: #282c34;
+  display: flex;
+  color: white;
+  align-content: normal;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2rem;
+  font-size: 2rem;
+}
+
+.show-quote{
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 8rem;
+}
+
+.show-quote p{
+  margin-block: 1rem;
+  text-align: left;
+  margin-left: 3rem;
+  line-height: 1.5;
+  font-size: 1.25rem;
+}
+
+.show-quote p span{
+  font-size: 80%;
+}
+
+.fa-star{
+  cursor: pointer;
+}
+
+.favorite-quotes{
+  list-style-type: none;
+  max-width: 800px;
+  margin: auto;
+}
+
+.favorite-quotes li{
+  display: flex;
+  align-items: center;
+}
+
+.favorite-quotes li p{
+  margin-block: 1rem;
+  text-align: left;
+  margin-left: 3rem;
+  line-height: 1.5;
+  font-size: 1.25rem;
+}
+
+.favorite-quotes li p span{
+  font-size: 80%;
+}
+
+/* סגנון עיקרי לרשימת הנגררת */
+select {
+  padding: 10px; /* מרווח פנימי */
+  font-size: 16px; /* גודל גופן */
+  border: 1px solid #ccc; /* גבול סביב הרשימה */
+  border-radius: 5px; /* פינות מעוגלות */
+  width: 200px; /* רוחב */
+  margin: 1rem;
+}
+
+/* סגנון לאפשרות שנבחרה */
+select option:checked {
+  background-color: #f9f106; /* רקע כאשר נבחר */
+  color: #333; /* צבע הטקסט כאשר נבחר */
+}
+
+/* סגנון לאפשרויות שאינן נבחרות */
+select option {
+  background-color: #fff; /* רקע רגיל */
+  color: #666; /* צבע הטקסט רגיל */
+}
+
+/* סגנון לרקע של הסלקט כאשר פתחים את הרשימה */
+select:focus {
+  border-color: #007bff; /* גבול כאשר הרשימה פתוחה */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* אפשרות נוספת לסגנון כאשר הרשימה פתוחה */
+}
+
+.favorite-quote{
+  margin: 100px;
+}
+
+.btn-show-another-quote{
+  cursor: pointer;
+}
