@@ -1,7 +1,9 @@
+/* Global styles for the entire application */
 .App {
   text-align: center;
 }
 
+/* Styles for the application header */
 .app-header {
   background-color: #282c34;
   display: flex;
@@ -13,87 +15,114 @@
   font-size: 2rem;
 }
 
-.show-quote{
+/* Styles for the quote display container */
+.show-quote {
   max-width: 800px;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding-block: 20px;
   height: 8rem;
+  @media (max-width: 768px) {
+    height: 100%;
+  }
 }
 
-.show-quote p{
+/* Styles for the quote text within the display container */
+.show-quote p {
   margin-block: 1rem;
   text-align: left;
   margin-left: 3rem;
+  @media (max-width: 900px) {
+    margin-left: 1.5rem;
+  }
   line-height: 1.5;
   font-size: 1.25rem;
 }
 
-.show-quote p span{
+/* Styles for the author span within the quote display */
+.show-quote p span {
   font-size: 80%;
 }
 
-.fa-star{
+/* Styles for the star icon used for favorites */
+.fa-star {
   cursor: pointer;
 }
 
-.favorite-quotes{
+/* Styles for the list of favorite quotes */
+.favorite-quotes {
   list-style-type: none;
   max-width: 800px;
   margin: auto;
 }
 
-.favorite-quotes li{
+/* Styles for the unordered list element */
+ul {
+  @media (max-width: 900px) {
+    padding-inline-start: 0px;
+  }
+}
+
+/* Styles for each favorite quote item */
+.favorite-quotes li {
   display: flex;
   align-items: center;
 }
 
-.favorite-quotes li p{
+/* Styles for the text within each favorite quote item */
+.favorite-quotes li p {
   margin-block: 1rem;
   text-align: left;
   margin-left: 3rem;
+  @media (max-width: 900px) {
+    margin-left: 1.5rem;
+  }
   line-height: 1.5;
   font-size: 1.25rem;
 }
 
-.favorite-quotes li p span{
+/* Styles for the span within each favorite quote item */
+.favorite-quotes li p span {
   font-size: 80%;
 }
 
-/* סגנון עיקרי לרשימת הנגררת */
+/* Styles for the main select element */
 select {
-  padding: 10px; /* מרווח פנימי */
-  font-size: 16px; /* גודל גופן */
-  border: 1px solid #ccc; /* גבול סביב הרשימה */
-  border-radius: 5px; /* פינות מעוגלות */
-  width: 200px; /* רוחב */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
   margin: 1rem;
+  cursor: pointer;
 }
 
-/* סגנון לאפשרות שנבחרה */
+/* Styles for the selected option within the select element */
 select option:checked {
-  background-color: #f9f106; /* רקע כאשר נבחר */
-  color: #333; /* צבע הטקסט כאשר נבחר */
+  background-color: #f9f106;
+  color: #333;
 }
 
-/* סגנון לאפשרויות שאינן נבחרות */
+/* Styles for options within the select element */
 select option {
-  background-color: #fff; /* רקע רגיל */
-  color: #666; /* צבע הטקסט רגיל */
+  background-color: #fff;
+  color: #666;
 }
 
-/* סגנון לרקע של הסלקט כאשר פתחים את הרשימה */
+/* Styles for the select element when focused */
 select:focus {
-  border-color: #007bff; /* גבול כאשר הרשימה פתוחה */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* אפשרות נוספת לסגנון כאשר הרשימה פתוחה */
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.favorite-quote{
+/* Styles for the container of favorite quotes */
+.favorite-quote {
   margin: 100px;
 }
 
-.btn-show-another-quote{
+/* Styles for the "Show me another quote" button */
+.btn-show-another-quote {
   cursor: pointer;
 }

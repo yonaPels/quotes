@@ -4,10 +4,21 @@ import React from "react";
 import { GenerateQuote } from "./generate-quote";
 import { FavoriteQuotes } from "./favorite-quotes";
 
+/**
+ * MainContent Component
+ * This component represents the main content of the application.
+ * It includes tabs for generating quotes and viewing favorite quotes.
+ */
 export function MainContent(){
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState("1");
 
+    /**
+     * Handle Tab Change
+     * This function handles the tab change event and updates the selected tab value.
+     * param {Event} event - The tab change event.
+     * param {string} newValue - The new tab value.
+     */
     const handleChange = (event, newValue) => {
       setValue(newValue);
     }
