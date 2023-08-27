@@ -1,44 +1,65 @@
 import axios from 'axios';
 
 const API_KEY = 'X/3y7Qye5LXBEgDyBm+5qQ==q3gyC584eRvRVSSk';
-const APIֹֹֹ_URL = 'https://api.api-ninjas.com/v1/quotes?category=';
+const API_URL = 'https://api.api-ninjas.com/v1/quotes?category=&';
 
 export const quoteService = {
     getRandomQuote,
     toggleFavorite,
     getFavoriteQuote,
     removeFavorite,
-    getCategorise,
+    getCategories,
 }
 
-async function getRandomQuote(){
+/**
+ * Get a random quote from the API.
+ * param {number} maxLength - Maximum length of the quote text.
+ * returns {Object} - A random quote object.
+ * throws {Error} - If there is an error in the API request.
+ */
+async function getRandomQuote(maxLength = 300) {
     try {
-      const response = await axios.get(APIֹֹֹ_URL, {
-        headers: {
-          'X-Api-Key': API_KEY,
-        },
-      });
-      return response.data[0]
+        const { data } = await axios.get(API_URL, {
+            headers: {
+                'X-Api-Key': API_KEY,
+            },
+        });
+        if (data[0].quote.length < maxLength) return data[0];
+        else return getRandomQuote()
     } catch (error) {
-      console.error('error in API request:', error.message);
-      throw error;
-    }      
+        console.error('Error in API request:', error.message);
+        throw error;
+    }
 }
 
-function getFavoriteQuote(selectedCategory){
+/**
+ * Get favorite quotes optionally filtered by category.
+ * param {string} selectedCategory - The selected category for filtering quotes (optional).
+ * returns {Array} - An array of favorite quotes.
+ */
+function getFavoriteQuote(selectedCategory) {
     const quotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
     if (!selectedCategory) return quotes
     const filteredQuotes = quotes.filter((quote) => quote.category === selectedCategory);
     return filteredQuotes
 }
 
-function getCategorise(){
+/**
+ * Get unique categories from the list of favorite quotes.
+ * returns {Array} - An array of unique categories.
+ */
+function getCategories() {
     const quotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
-    const categorise = _collectCategorise(quotes)
-    return categorise
+    const categories = _collectCategories(quotes)
+    return categories
 }
 
-function toggleFavorite(isFavorite, quote){
+/**
+ * Toggle a quote as a favorite or remove it from favorites.
+ * param {boolean} isFavorite - Indicates if the quote should be added or removed from favorites.
+ * param {Object} quote - The quote object to add or remove from favorites.
+ */
+function toggleFavorite(isFavorite, quote) {
     if (isFavorite) {
         const favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
         quote._id = _generateRandomId()
@@ -51,28 +72,35 @@ function toggleFavorite(isFavorite, quote){
     }
 }
 
-function removeFavorite(id){
+/**
+ * Remove a quote from favorites by its ID.
+ * param {string} id - The ID of the quote to remove from favorites.
+ */
+function removeFavorite(id) {
     const favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes'))
     const updatedQuotes = favoriteQuotes.filter((quote) => quote._id !== id);
     localStorage.setItem('favoriteQuotes', JSON.stringify(updatedQuotes));
 }
 
-function _collectCategorise(arr){
+/**
+ * Collect unique categories from an array of quotes.
+ * param {Array} arr - An array of quotes.
+ * returns {Array} - An array of unique categories.
+ */
+function _collectCategories(arr) {
     const categories = arr.reduce((acc, quote) => {
         if (!acc.includes(quote.category)) {
-          acc.push(quote.category);
+            acc.push(quote.category);
         }
         return acc;
-      }, []);
+    }, []);
     return categories
 }
 
+/**
+ * Generate a random ID.
+ * returns {string} - A random ID string.
+ */
 function _generateRandomId() {
     return Math.random().toString(36).substring(2, 10);
 }
-
-
-
-
-
-
