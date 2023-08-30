@@ -7,7 +7,7 @@ import { quoteService } from "../services/quote.service";
  */
 export function FavoriteQuotes() {
   // Define state variables for quotes, categories, and the selected category
-  const [quotes, setQuotes] = useState('');
+  const [quotes, setQuotes] = useState("");
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -31,7 +31,7 @@ export function FavoriteQuotes() {
       const quotes = await quoteService.getFavoriteQuote(selectedCategory);
       setQuotes(quotes);
     } catch (err) {
-      console.error('Error fetching quotes:', err);
+      console.error("Error fetching quotes:", err);
     }
   }
 
@@ -53,7 +53,7 @@ export function FavoriteQuotes() {
     quoteService.removeFavorite(quoteId);
     const updatedCategories = quoteService.getCategories();
     setCategories(updatedCategories);
-    
+
     // If the selected category is no longer available, clear it
     if (!updatedCategories.includes(selectedCategory)) {
       setSelectedCategory(null);
@@ -64,7 +64,7 @@ export function FavoriteQuotes() {
   }
 
   // Display loading message if quotes are being fetched
-  if (quotes === '') return <h1>Loading...</h1>;
+  if (quotes === "") return <h1 className="loading">Loading...</h1>;
 
   // Display a message if there are no favorite quotes
   if (Array.isArray(quotes) && quotes.length === 0) {
@@ -89,9 +89,14 @@ export function FavoriteQuotes() {
         {quotes.map((quote) => (
           <li key={quote._id}>
             <div onClick={() => removeFavorite(quote._id)}>
-              <i className="fa-solid fa-star fa-2xl" style={{ color: '#FFD700' }} />
+              <i
+                className="fa-solid fa-star fa-2xl"
+                style={{ color: "#FFD700" }}
+              />
             </div>
-            <p>"{quote.quote}" <span>({quote.author})</span></p>
+            <p>
+              "{quote.quote}" <span>({quote.author})</span>
+            </p>
           </li>
         ))}
       </ul>

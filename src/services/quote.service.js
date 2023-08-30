@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = 'X/3y7Qye5LXBEgDyBm+5qQ==q3gyC584eRvRVSSk';
-const API_URL = 'https://api.api-ninjas.com/v1/quotes?category=&';
+const API_URL = 'https://api.api-ninjas.com/v1/quotes?category=';
 
 export const quoteService = {
     getRandomQuote,
@@ -9,6 +9,7 @@ export const quoteService = {
     getFavoriteQuote,
     removeFavorite,
     getCategories,
+    getQuotesByCategory,
 }
 
 /**
@@ -30,6 +31,21 @@ async function getRandomQuote(maxLength = 300) {
         console.error('Error in API request:', error.message);
         throw error;
     }
+}
+
+async function getQuotesByCategory(category) {
+  try {
+    const { data } = await axios.get(`${API_URL}${category}&limit=6`, {
+        headers: {
+            'X-Api-Key': API_KEY,
+        },
+    });
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching quotes by category:", error);
+    throw error;
+  }
 }
 
 /**
@@ -61,8 +77,8 @@ function getCategories() {
  */
 function toggleFavorite(isFavorite, quote) {
     if (isFavorite) {
-        const favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
         quote._id = _generateRandomId()
+        const favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
         favoriteQuotes.push(quote);
         localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
     } else {

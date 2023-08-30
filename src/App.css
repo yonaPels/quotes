@@ -18,32 +18,9 @@
 /* Styles for the quote display container */
 .show-quote {
   max-width: 800px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-block: 20px;
-  height: 8rem;
-  @media (max-width: 768px) {
-    height: 100%;
-  }
-}
-
-/* Styles for the quote text within the display container */
-.show-quote p {
-  margin-block: 1rem;
-  text-align: left;
-  margin-left: 3rem;
-  @media (max-width: 900px) {
-    margin-left: 1.5rem;
-  }
-  line-height: 1.5;
-  font-size: 1.25rem;
-}
-
-/* Styles for the author span within the quote display */
-.show-quote p span {
-  font-size: 80%;
+  margin: 2rem auto;
+  /* display: flex; */
+  /* align-items: center; */
 }
 
 /* Styles for the star icon used for favorites */
@@ -58,13 +35,6 @@
   margin: auto;
 }
 
-/* Styles for the unordered list element */
-ul {
-  @media (max-width: 900px) {
-    padding-inline-start: 0px;
-  }
-}
-
 /* Styles for each favorite quote item */
 .favorite-quotes li {
   display: flex;
@@ -76,11 +46,11 @@ ul {
   margin-block: 1rem;
   text-align: left;
   margin-left: 3rem;
+  line-height: 1.5;
+  font-size: 1.25rem;
   @media (max-width: 900px) {
     margin-left: 1.5rem;
   }
-  line-height: 1.5;
-  font-size: 1.25rem;
 }
 
 /* Styles for the span within each favorite quote item */
@@ -113,16 +83,88 @@ select option {
 
 /* Styles for the select element when focused */
 select:focus {
-  border-color: #007bff;
+  /* border-color: #007bff; */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Styles for the container of favorite quotes */
-.favorite-quote {
-  margin: 100px;
 }
 
 /* Styles for the "Show me another quote" button */
 .btn-show-another-quote {
   cursor: pointer;
+}
+
+.katgory-btn-container{
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  max-width: 800px;
+  justify-content: center;
+  overflow-x: auto; /* הוספת גלילה אופקית רק כאשר הכפתורים לא יכולים להיכנס בשורה אחת */
+  /* white-space: nowrap;  */
+}
+
+/* סגנון עיקרי לכפתורים */
+.katgory-btn {
+  background-color: rgb(185 184 185);
+  color: white; /* צבע הטקסט */
+  border: none; /* ללא גבול */
+  margin: 1rem; /* מרווחים חיצוניים */
+  border-radius: 5px; /* פינות מעוגלות */
+  cursor: pointer; /* הפרמטר כדי להציג יד למעבר בעכבר */
+  font-size: 16px; /* גודל הטקסט */
+  font-weight: bold; /* משקל הטקסט */
+  transition: background-color 0.3s ease; /* אנימציה לשינוי הרקע */
+  height: 4rem;
+  width: 8rem;
+}
+
+/* סגנון כאשר העכבר עובר מעל */
+.katgory-btn:hover {
+  background-color: #282c34; /* שינוי רקע כאשר העכבר עובר מעל */
+}
+
+/* סגנון לכשהכפתור נלחץ */
+.katgory-btn:active {
+  background-color: #003c80; /* שינוי רקע כאשר הכפתור נלחץ */
+}
+
+/* סגנון עבור הטקסט שבתוך הכפתור */
+.katgory-btn span {
+  margin-left: 5px; /* מרווח משמאל של הטקסט */
+}
+
+
+/* סגנון להרגשת חמימות בכפתורים */
+.katgory-btn.warm {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.quote-preview{
+  display: flex;
+  max-width: 800px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.quote-preview p {
+  margin-block: 1rem;
+  text-align: left;
+  margin-left: 3rem;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  @media (max-width: 900px) {
+    margin-left: 1.5rem;
+  };
+}
+
+.quote-preview p span {
+  font-size: 80%;
+}
+
+ul {
+  padding: 0;
+}
+
+.loading{
+  padding: 3rem;
 }
