@@ -26,16 +26,9 @@ export function MainContent() {
   return (
     <TabContext value={value}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <TabList
-          onChange={handleChange}
-          aria-label="lab API tabs example"
-          variant="scrollable"
-          scrollButtons="auto"
-          allowScrollButtonsMobile
-        >
-          <Tab label="Generate quote" value="1" />
+        <TabList onChange={handleChange} aria-label="lab API tabs example">
+          <Tab label="Generate quotes" value="1" />
           <Tab label="favorite quotes" value="2" />
-          <Tab label="quotes by category" value="3" />
         </TabList>
       </Box>
       <TabPanel value="1">
@@ -43,9 +36,6 @@ export function MainContent() {
       </TabPanel>
       <TabPanel value="2">
         <FavoriteQuotes />
-      </TabPanel>
-      <TabPanel value="3">
-        <QuotesByCategory />
       </TabPanel>
     </TabContext>
   );

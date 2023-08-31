@@ -9,7 +9,6 @@ import { QuotePreview } from "./quote-preview";
 export function GenerateQuote() {
   // Define state variables for the current quote and its favorite status
   const [quote, setQuote] = useState("");
-  const [isFavorite, setIsFavorite] = useState(false);
 
   /**
    * useEffect to Fetch a Random Quote
@@ -33,7 +32,6 @@ export function GenerateQuote() {
       const newQuote = await quoteService.getRandomQuote();
       // Update the state with the new quote and mark it as not a favorite
       setQuote(newQuote);
-      setIsFavorite(false);
     } catch (err) {
       // Handle errors by logging them and restoring the previous quote
       console.error("Error fetching quote:", err);
